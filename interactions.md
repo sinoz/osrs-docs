@@ -44,6 +44,62 @@ Interactions can happen in two ways:
   - Can only execute if there are no obstructions between the player and the entity itself.
   Line of sight alone is not sufficient here.
 
+## Implementation
+
+All interactions are fully suspendable, meaning the scripts can be paused at any given time, and executed later
+down the line. Interactions only halt if the script is forcibly interrupted, such as during death, 
+player-invoked teleportation or when another interaction is launched - replacing this one.
+Interactions themselves are not tied to route events. When a player clicks on a map object for example,
+the game will launch a route event to that map object. Upon arriving at that map object, the interaction will be launched,
+and the route event ends.
+
+Interactions such as clicking the "Attack" option on an NPC will launch a route event with an approach distance
+of ten squares. Upon arriving at the appropriate location for the interaction to execute, the route event ends.
+However, because combat requires continuous pathfinding to the target, combat interaction itself launches
+a repeated route event at the target, which can never end by itself. This will ensure that the player keeps
+following their target, while the interaction itself simply compares the distances to ensure combat can execute.
+The interaction itself does not have to worry about moving the player to the necessary coordinates.
+If the player unequips their weapon, the interaction does not cancel. However, because different weapons
+can have different attack distances(and some require line of sight, while others require full path),
+we must update the route event to one that matches the now-unarmed player.
+
+### Interruptions
+
+Interactions can only cancel with hard interruptions, such as:
+- Launching another interaction.
+- Death and other similar events which manually cancel interactions.
+- Player-invoked teleportation(E.G. clicking on [Varrock Teleport](https://oldschool.runescape.wiki/w/Varrock_Teleport)).
+- Certain interface buttons, such as the "View equipment stats" button on the equipment tab interface.
+- All item interactions within inventory. The same does not however apply when interacting from within the
+equipment tab.
+
+---
+
+Interactions will pause when:
+- A modal interface opens up.
+- An active queue exists.
+  - ***Yet to prove this!***
+
+---
+
+Interactions do **not** get interrupted or paused by the following:
+- Interface clicks(outside the exceptions mentioned above).
+
+## Use-cases
+
+Contrary to popular belief, actions such as [combat](https://oldschool.runescape.wiki/w/Combat), 
+[woodcutting](https://oldschool.runescape.wiki/w/Woodcutting), 
+[fishing](https://oldschool.runescape.wiki/w/Fishing), 
+[mining](https://oldschool.runescape.wiki/w/Mining) and many other map object and npc-interaction
+actions do not run off of the queue system.
+Instead, they run straight off of the same interaction script that originally launched from
+the route event.
+
+This can be proven by the following fact:
+- Because queues process before route events, it would not be possible for the aforementioned
+actions to execute on the tick on which the entity was clicked. Therefore, for example,
+spam-clicking trees would continuously reset the action, not allowing for a roll at the logs.
+
 ## Media
 
 *Demonstrates a failed distanced interaction:*
@@ -69,3 +125,10 @@ The player has to arrive by the object before the "Nothing interesting happens."
 The "Nothing interesting happens." message is sent immediately with a visible one square distance:*
 
 ![Mobile interaction](assets/media/interactions/mobile-interaction.gif)
+
+---
+
+*Demonstrates an interaction getting paused by a modal interface. After closing the interface,
+the interaction continues as normal:*
+
+![Paused interaction](assets/media/interactions/pausing-interaction.gif)
