@@ -47,9 +47,7 @@ Interactions can happen in two ways:
 ## Implementation
 
 All interactions are fully suspendable, meaning the scripts can be paused at any given time, and executed later
-down the line. Interactions only halt if the script is forcibly interrupted, such as during death, 
-player-invoked teleportation or when another interaction is launched - replacing this one.
-Interactions themselves are not tied to route events. When a player clicks on a map object for example,
+down the line. Interactions themselves are not tied to route events. When a player clicks on a map object for example,
 the game will launch a route event to that map object. Upon arriving at that map object, the interaction will be launched,
 and the route event ends.
 
