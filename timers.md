@@ -1,58 +1,66 @@
 
-*This thread is still under construction and may experience significant changes in the future.
-A lot of the information provided here is theoretical and yet to be tested in depth.*
-
----
-
 # Timers
 
-Timers refer to events that are processed every server tick for all the active events.
-Timers are not to be confused with boss kill timers or clocks, although both of those may be used within
-the timers.
+The timers' system is used to execute periodic scripts for players and NPCs.
+Each timer can only execute at a defined interval. The timer will start at the given interval,
+and count down until it reaches zero, upon which the script itself is invoked.
+Timers execute before queues for NPCs, and after queues for players.
+There are two types of timers in OldSchool RuneScape - soft timers and normal timers.
 
-## Conditions
+### Soft Timers
 
-Timers execute every single server tick for which they are queued on the entity. This does not however mean
-that all timers will always alter the entity. A lot of the timers seem to have checks for if the entity is
-under a stall, or the player(if the timer is scheduled on a player) has any modal interfaces open.
-None of this applies to all the timers, therefore these conditions must be checked on a per-timer basis.
+Soft timers can be used by NPCs as well as players. In the case of players however, they do not have advanced
+access to the player, meaning they cannot change or read the player's inventories or variables.
+Soft timers tick down regardless of the state of the entity, as long as they haven't completely
+been removed from the game.
+
+### Normal Timers
+
+Normal timers are unique only to players. They are used for scripts which require advanced access to the player itself.
+While normal timers do tick down without interruptions, the contents of the script may only execute if the
+player has not got a modal interface open, and is not under the effects of a stall at the moment.
+If the player does not meet the aforementioned conditions when the timer reaches zero, the timer halts.
+Each tick that follows, it will try to execute the script until it finally can, after which the timer is set
+back to the period with which it was originally launched.
 
 ## Known timers
 
-Below is a list of known timers, and the conditions under which they can execute.
 
-- Toxins(poison, venom, disease):
-  - Toxins have a unique processing mechanic to them, compared to the rest of the timers. They make use of the clock
-  system to determine when the respective toxin execution should occur. Toxins will not execute if there is an ongoing stall,
-  or if the player has a modal interface open. However, because it uses the clock system to determine when poison
-  should go off, the toxin will still get processed when the entity is no longer stalled or has a modal interface
-  open. So, for example, if there are five server ticks until the next poison hit should occur, and you open a modal interface
-  for ten server ticks, upon closing the interface, the toxin will execute immediately. During the execution,
-  the clock will then be reset to next execute 30 server ticks from then. You cannot queue up multiple toxin executions.
-- Dwarf multicannon, Magic Imbue spell, wine fermentation:
-  - All of these can only process while the entity is not under a stall and does not have a modal interface open.
-  - ***Still need to test if wine fermentation and multicannon use clocks alongside, or get fully delayed.***
-- Divine potions, overloads, antifires, anti-toxin potions(e.g. Relicym's balm), stat enhancements/debuffs,
-immunities, stamina enhancement, prayer enhance, imbued heart cooldown, Toxic staff of the dead's special attack,
-Morrigan's throwing axe special attack, vengeance cooldown:
-  - All of these run independently, meaning they do not care if there is an ongoing stall or if a modal interface is open.
+### Soft Timers
+
+- Player soft timers:
+  - Divine potions.
+  - Overloads.
+  - Antifires.
+  - Anti-toxin potions(Relicym's balm, antipoison, anti-venom and all the other variations).
+  - Stat enhancements/debuffs.
+  - Immunities(freeze, teleblock).
+  - Stamina enhancement.
+  - Prayer enhance
+  - Imbued heart cooldown.
+  - Toxic staff of the dead's special attack.
+  - Morrigan's throwing axe special attack.
+  - Vengeance cooldown.
+  - Hunter trap collapsing.
+  - Tracking boss fight durations.
+- NPC soft timers(*List is still very incomplete at this time*):
+  - Respawning.
+  - Fishing spot periodic teleportation.
+  - Toxins(poison, venom, disease).
+
+### Normal Timers
+
+*As NPCs only support soft timers, this section only applies to players.*
+
+- Toxins(poison, venom, disease).
+- Dwarf multicannon.
+- Wine fermentation.
+- Magic Imbue spell.
 - Farming:
-  - Farming executes off of the timers, but it uses the clock system to determine whether a farming cycle has passed.
-  Farming runs at a five-minute interval, real-time, for all players. However, farming cannot process if the
-  player has an ongoing stall, or a modal interface open. Those simply delay the execution. The processing happens
-  by comparing the last farming process cycle against the current real-time farming cycle. If both cycles are
-  equivalent to one another, farming does not need to process. If the last process cycle is less than the current,
-  by say three cycles, it will loop farming process method for three cycles within the timer.
-- Hunter traps:
-  - Unlike farming, hunter will process even if there is an ongoing stall or the player has a modal interface.
-  In addition to this, all hunter traps the player has placed will immediately collapse upon logout.
-- Fishing spots:
-  - *This timer is linked to the fishing spot NPC itself. It has no relation to players, unlike everything above.*
-  - Almost all fishing spots will periodically shift their position in the game. The only exceptions to this are
-  karambwan fishing spots and frogspawn fishing spots. Most, but not all, fishing spots shift position every
-  three to five minutes. The actual delay between the shift is random between those values. This means however,
-  they use the clock system to determine when the next shift should occur.
-  
+  - While farming runs at an interval of five minutes, the time until the initial execution varies. Farming is synchronized with
+  real-time clocks.
+  - Cut-down farming trees execute on a separate timer.
+
 ## Media
 
 *The gif below demonstrates the delaying of poison execution. With the assistance from RuneLite,
@@ -60,3 +68,21 @@ we can tell that the poison should have executed twice in the time the interface
 Upon closing the interface, the poison will go off once that same server tick.*
 
 ![Poison delay](assets/media/timers/poison-delay.gif)
+
+---
+
+*A leak by Mod Ash showing the RuneScript code behind queueing a soft timer.
+The `$sw` coordinate is an argument that the `inferno_timetrack` script requires.*
+
+![Inferno softtimer](assets/media/timers/inferno-runescript-softtimer.png)
+
+---
+
+*A series of tweets by Mod Ash explaining the timers' system in depth.*
+
+![Twitter questions](assets/media/timers/twitter-questions.jpeg)
+
+---
+
+## References
+1. [Mod Ash Tweets](https://twitter.com/ZenKris21/status/1429701903626211334)

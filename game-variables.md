@@ -76,7 +76,7 @@ Varbit configs can be found in the OldSchool RuneScape cache, in index 2, archiv
 varbit config. Each of these configs will have all three [attributes](#Varbit-Attributes) defined.
 Using said attributes, we know exactly which bit range the given varbit alters.
 
-#### Example
+#### Example - *Requires clearer examples!*
 
 *Please keep in mind that the below example is only meant to demonstrate how to change and transmit a varbit
 value change. It is not meant to give you a full understanding of how bitwise operations work - that is a
