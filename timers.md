@@ -5,6 +5,11 @@ The timers' system is used to execute periodic scripts for players and NPCs.
 Each timer can only execute at a defined interval. The timer will start at the given interval,
 and count down until it reaches zero, upon which the script itself is invoked.
 Timers execute before queues for NPCs, and after queues for players.
+Timers do not execute on the tick on which they were queued. This is important to keep in mind,
+as this is what allows prayer-flicking to not drain prayer points in OldSchool RuneScape.
+New timers are presumably queued into a separate list. During the processing part of timers,
+existing timers are ticked down and processed if needed. After that, the new timers list is iterated,
+and the respective timers are moved onto the existing timers' collection. *The new timers do not get executed this tick.*
 There are two types of timers in OldSchool RuneScape - soft timers and normal timers.
 
 ### Soft Timers
@@ -56,6 +61,7 @@ back to the period with which it was originally launched.
 - Dwarf multicannon.
 - Wine fermentation.
 - Magic Imbue spell.
+- Prayers.
 - Farming:
   - While farming runs at an interval of five minutes, the time until the initial execution varies. Farming is synchronized with
   real-time clocks.
