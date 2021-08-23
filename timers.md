@@ -1,5 +1,5 @@
 
-*This thread is still under construction and may experience significant changes in the future
+*This thread is still under construction and may experience significant changes in the future.
 A lot of the information provided here is theoretical and yet to be tested in depth.*
 
 ---
