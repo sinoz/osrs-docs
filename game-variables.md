@@ -38,7 +38,7 @@ Varps are used in the following scenarios:
   - These are used to change the visual representation of the config to a different config of the same type,
   so for example, farming patch states are transmitted through the use of varps.
   In the respective base config, the base varp is defined, as well as the different transformations
-  that the varp can take, depending on the value that is assigned to it. Each value refers to the respective
+  that the config can take, depending on the value that is assigned to the varp. Each value refers to the respective
   index in the transformations array.
 - Client scripts
   - An example of this would be changing the state of a button on an interface,
