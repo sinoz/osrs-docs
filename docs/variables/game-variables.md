@@ -1,3 +1,6 @@
+---
+parent: Variables
+---
 
 # Game Variables(Varbits, Varps and Varcs)
 
@@ -52,9 +55,6 @@ Varps are used in the following scenarios:
 Varbits, as their name suggests, are bits of player variables. Their data is stored within
 [varps](#varps) themselves. Each varbit has a single parent varp. They can consist of 
 anywhere from 1 to 32 bits of data.
----
-parent: Variables
----
 
 ### Varbit Attributes
 Varbits come with three attributes:
