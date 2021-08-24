@@ -17,9 +17,9 @@ Because of that, the hits can support a lot more than what they're currently bei
 All the variables covered below are written as small short smarts, meaning their minimum value is 0, and the maximum
 value is 32,767.
 - The type of the hit. The type indicates the config that will be used for the given hit splat.
-  - You can read about all the different types of hits in the [hit types](#Hit-Types) section below.
+  - You can read about all the different types of hits in the [hit types](#hit-types) section below.
   - The types 0x7FFF(32,767) and 0x7FFE(32,766) are used to inform the client to read the hit info differently.
-  A breakdown of this can be found below in [ways of writing hits](#Ways-of-Writing-Hits).
+  A breakdown of this can be found below in [ways of writing hits](#ways-of-writing-hits).
 - The amount displayed on the hit.
 - The delay until the hit is rendered. The duration is in client ticks, which are 20 millisecond each.
 - Unused variables(They are supported by the mask, but never used in OldSchool RuneScape):
@@ -42,7 +42,7 @@ There are three possible ways to write a hit splat to the client:
 
 ### Hit Types
 There are two types of hit configs - ones that always display the same sprite, and ones that show a tinted version if the hit was dealt by someone other than yourself.
-- [Varbit](Game-Variables#Varbits)-driven types. These types have two variations of the hit splat - an active and an inactive version.
+- [Varbit](game-variables#varbits)-driven types. These types have two variations of the hit splat - an active and an inactive version.
 They all make use of varbit 10,236, which corresponds to the in-game setting "Hitsplat tinting".
 If the varbit's value is 0, the inactive version of the hit splat will be shown for the dynamic versions. The always active column indicates
 configs which will always display the active icon, regardless of the current value of the given varbit.
@@ -105,7 +105,7 @@ per updated entity in one game tick, only the first head bar will actually rende
 Below is a list of supported variables for head bars. Even though the mask itself is a direct copy of that found in RuneScape 3 today,
 only one head bar can display in OldSchool RuneScape. The code responsible for finding the respective current head bar stops at the
 very first head bar that is active at the moment, regardless of if it actually matches the one that is being updated.
-- The type of the head bar. See types [here](#Head-Bar-Types).
+- The type of the head bar. See types [here](#head-bar-types).
 - The time span of the head bar. While this appears to never be used in OldSchool RuneScape, it is supported.
 The number written informs the client to gradually progress the head bar towards the destination provided further below. Each value
 corresponds to one client tick, or 20 milliseconds. If the time span is written as 0x7FFF(32,767), the head bar will instead be
