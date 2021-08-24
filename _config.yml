@@ -6,4 +6,4 @@ gems:
 color_scheme: "dark"
 markdown: kramdown
 baseurl: "/osrs-docs"
-url: "https://z-kris.github.io/"
+url: "https://z-kris.github.io"
