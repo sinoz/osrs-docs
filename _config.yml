@@ -1,4 +1,4 @@
-remote_theme: andrewhwanpark/minimal-bootstrap-blog
+remote_theme: pmarsceill/just-the-docs
 gems:
   - jekyll-seo-tag
   - jekyll-sitemap

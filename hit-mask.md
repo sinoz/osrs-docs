@@ -1,7 +1,3 @@
----
-layout: post
-title: Test Title
----
 
 # Hit Mask
 
