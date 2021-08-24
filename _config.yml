@@ -1,5 +1,7 @@
 remote_theme: andrewhwanpark/minimal-bootstrap-blog
 gems:
   - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
 theme_config:
   appearance: "dark"
