@@ -121,6 +121,8 @@ a lot of duplicate types are made to fill every possible width that might be use
 - The disposal variable refers to the client tick at which the head bar begins gradually vanishing.
 - The width refers to the width of the head bar sprite.
 
+*The table is sorted according to the internal head bar type ids.*
+
 |  Id  | Filled sprite | Empty sprite | Name | Duration | Disposal | Width | Description |
 |:----:|:-------------:|:------------:|:----:|:--------:|:--------:|:-----:|:-----------:|
 | 0 | ![Full health_30](assets/media/hit-mask/head-bar-sprites/2176_0.png) | ![Empty health_30](assets/media/hit-mask/head-bar-sprites/2177_0.png) | Health | 300 | N/A | 30 | Indicates the current health of the entity. |
