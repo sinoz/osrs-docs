@@ -3,5 +3,4 @@ gems:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
-theme_config:
-  appearance: "dark"
+color_scheme: "dark"
