@@ -3,14 +3,14 @@
 
 Random walk is a mechanic used by NPCs to roam around the game.
 NPCs which aren't doing anything(moving, interacting) have a chance to
-determine a path to a random location within their [wander range](wander-range.md#Wander-Range).
+determine a path to a random location within their [wander range](wander-range.md#wander-range).
 
 ## Conditions
 
 NPCs may only wander if they aren't currently occupied by some other activity, such as combat.
 Based on the erratic paths that the NPCs take - moving in one direction, then suddenly going in the opposite one,
 we can assume that wandering may occur even if the NPC has some movement queued up.
-NPCs with a [wander range](wander-range.md#Wander-Range) or [max range](max-range.md#Max-Range) of 0
+NPCs with a [wander range](wander-range.md#wander-range) or [max range](max-range.md#max-range) of 0
 can never move from their spot.
 
 ## Probability
@@ -31,7 +31,7 @@ backgrounds. Note that the code is still heavily obfuscated. Parts of it have be
 
 Based on the code, we can gather the following facts:
 - The NPCs use the intelligent pathfinder for calculating random movement.
-- All NPCs in the client have a fixed [wander range](wander-range.md#Wander-Range) of five squares.
+- All NPCs in the client have a fixed [wander range](wander-range.md#wander-range) of five squares.
 - The client caps random movement calculations to a maximum of nine turns. The equivalent for player paths
 in the server in OldSchool RuneScape is 24.
 - The NPCs in the client only have a chance to roll for the random movement if they don't already have
@@ -90,13 +90,13 @@ However, this would not happen indefinitely, as the NPC would often just calcula
 The same could also be seen in the midst of normal paths, the NPC would very frequently just turn in the complete
 opposite direction of where they were headed.
 - The probability of random movement seems to be around what could be found in the client.
-- NPCs would often walk long paths, as long as their [wander range](wander-range.md#Wander-Range) supported them,
+- NPCs would often walk long paths, as long as their [wander range](wander-range.md#wander-range) supported them,
 and they weren't interrupted by obstructing objects or other entities.
 - The movement of the NPCs indicates the use of the dumb pathfinder:
-  - The NPCs would almost never go around objects in the manner shown in the [invalid movement picture](#Invalid-movement).
-  - They would however very often slide against objects as shown in the [valid movement picture](#Valid-movement).
+  - The NPCs would almost never go around objects in the manner shown in the [invalid movement picture](#invalid-movement).
+  - They would however very often slide against objects as shown in the [valid movement picture](#valid-movement).
 
-While the NPCs could *sometimes rarely* go in the movement depicted in the [invalid movement picture](#Invalid-movement),
+While the NPCs could *sometimes rarely* go in the movement depicted in the [invalid movement picture](#invalid-movement),
 it was very rare to see this. The phenomenon could be explained by two random movements chaining together.
 
 ### Invalid movement
@@ -127,5 +127,5 @@ is calculated before that.
 
 *NPC random movement being observed. The gif shows how walking away from in front of a goblin 
 allows it to continue moving on the same path. In addition to this, it shows numerous examples of
-the [valid movement](#Valid-movement) paths occurring, without it ever looking like the one seen in
-the [invalid movement picture](#Invalid-movement).*
+the [valid movement](#valid-movement) paths occurring, without it ever looking like the one seen in
+the [invalid movement picture](#invalid-movement).*

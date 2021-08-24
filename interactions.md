@@ -17,7 +17,7 @@ The direct effect of that is that mobile interactions can happen at a visible di
 whereas for objects you will first walk up to them, before the interaction can execute.
 Do note that while mobile interactions visually execute prior to you taking the final step,
 failed interactions will however be delayed similarly to how map objects get executed.
-The effects of this can be seen on the first two gifs in [media](#Media).
+The effects of this can be seen on the first two gifs in [media](#media).
 The failed one will only send a message upon arriving at the destination,
 whereas the successful one will execute from a distance.
 
@@ -37,7 +37,7 @@ Interactions can happen in two ways:
   such as a banker, it will not be able to pathfind directly next to them. Instead, however,
   the pathfinder will find an alternative path that is both closest to your current position
   and closest to the entity with which you are interacting. The effects of this can be seen
-  in the [media](#Media) section below, as the first gif.
+  in the [media](#media) section below, as the first gif.
 - Within interaction distance:
   - Requires the player to walk up to the entity it is interacting with before the interaction
   can execute.

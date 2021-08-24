@@ -50,7 +50,7 @@ Varps are used in the following scenarios:
 
 ## Varbits
 Varbits, as their name suggests, are bits of player variables. Their data is stored within
-[varps](#Varps) themselves. Each varbit has a single parent varp. They can consist of 
+[varps](#varps) themselves. Each varbit has a single parent varp. They can consist of 
 anywhere from 1 to 32 bits of data.
 
 ### Varbit Attributes
@@ -64,7 +64,7 @@ Varbits come with three attributes:
 
 ### Packets
 While varbits themselves do not have dedicated packets, their values are transmitted
-by sending the respective [varp](#Varps) to the client.
+by sending the respective [varp](#varps) to the client.
 
 ### Client Uses
 Varbits are used in an identical manner to varps themselves, with the main difference being that configs
@@ -73,7 +73,7 @@ have a dedicated varbit field to hook to a specific varbit, rather than listen t
 ### Example bitpacking
 
 Varbit configs can be found in the OldSchool RuneScape cache, in index 2, archive 14. Each file represents one
-varbit config. Each of these configs will have all three [attributes](#Varbit-Attributes) defined.
+varbit config. Each of these configs will have all three [attributes](#varbit-attributes) defined.
 Using said attributes, we know exactly which bit range the given varbit alters.
 
 #### Example - *Requires clearer examples!*
