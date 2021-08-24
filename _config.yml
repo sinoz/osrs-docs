@@ -1,4 +1,4 @@
-remote_theme: dracula/gh-pages
+remote_theme: andrewhwanpark/minimal-bootstrap-blog
 gems:
   - jekyll-seo-tag
 theme_config:
