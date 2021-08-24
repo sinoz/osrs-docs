@@ -74,20 +74,20 @@ back to the period with which it was originally launched.
 we can tell that the poison should have executed twice in the time the interface was open.
 Upon closing the interface, the poison will go off once that same server tick.*
 
-![Poison delay](assets/media/timers/poison-delay.gif)
+![Poison delay](../assets/media/timers/poison-delay.gif)
 
 ---
 
 *A leak by Mod Ash showing the RuneScript code behind queueing a soft timer.
 The `$sw` coordinate is an argument that the `inferno_timetrack` script requires.*
 
-![Inferno softtimer](assets/media/timers/inferno-runescript-softtimer.png)
+![Inferno softtimer](../assets/media/timers/inferno-runescript-softtimer.png)
 
 ---
 
 *A series of tweets by Mod Ash explaining the timers' system in depth.*
 
-![Twitter questions](assets/media/timers/twitter-questions.jpeg)
+![Twitter questions](../assets/media/timers/twitter-questions.jpeg)
 
 ---
 

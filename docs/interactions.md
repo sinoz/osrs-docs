@@ -102,31 +102,31 @@ spam-clicking trees would continuously reset the action, not allowing for a roll
 
 *Demonstrates a failed distanced interaction:*
 
-![Line of sight failed interaction](assets/media/interactions/los-npc-interaction-stuck.gif)
+![Line of sight failed interaction](../assets/media/interactions/los-npc-interaction-stuck.gif)
 
 ---
 
 *Demonstrates a successful distanced interaction:*
 
-![Line of sight interaction](assets/media/interactions/los-npc-interaction.gif)
+![Line of sight interaction](../assets/media/interactions/los-npc-interaction.gif)
 
 ---
 
 *Demonstrates an immobile interaction that hasn't got a script associated with it.
 The player has to arrive by the object before the "Nothing interesting happens." message can be sent:*
 
-![Immobile interaction](assets/media/interactions/immobile-interaction.gif)
+![Immobile interaction](../assets/media/interactions/immobile-interaction.gif)
 
 ---
 
 *Demonstrates a mobile interaction that hasn't got a script associated with it.
 The "Nothing interesting happens." message is sent immediately with a visible one square distance:*
 
-![Mobile interaction](assets/media/interactions/mobile-interaction.gif)
+![Mobile interaction](../assets/media/interactions/mobile-interaction.gif)
 
 ---
 
 *Demonstrates an interaction getting paused by a modal interface. After closing the interface,
 the interaction continues as normal:*
 
-![Paused interaction](assets/media/interactions/pausing-interaction.gif)
+![Paused interaction](../assets/media/interactions/pausing-interaction.gif)
