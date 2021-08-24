@@ -1,4 +1,4 @@
-remote_theme: abhinavs/moonwalk
+remote_theme: dracula/gh-pages
 gems:
   - jekyll-seo-tag
 theme_config:
