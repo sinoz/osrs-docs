@@ -1,1 +1,3 @@
 remote_theme: abhinavs/moonwalk
+gems:
+  - jekyll-seo-tag
