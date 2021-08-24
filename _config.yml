@@ -5,3 +5,4 @@ gems:
   - jekyll-feed
 color_scheme: "dark"
 markdown: kramdown
+baseurl: "/osrs-docs"
