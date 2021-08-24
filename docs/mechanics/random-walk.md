@@ -104,11 +104,11 @@ it was very rare to see this. The phenomenon could be explained by two random mo
 
 ### Invalid movement
 
-![Invalid random path](../../assets/media/random-walk/invalid-random-path.png)
+![Invalid random path](/assets/media/random-walk/invalid-random-path.png)
 
 ### Valid movement
 
-![Valid random path](../../assets/media/random-walk/valid-random-path.png)
+![Valid random path](/assets/media/random-walk/valid-random-path.png)
 
 
 ## Server-sided implementation
@@ -126,7 +126,7 @@ is calculated before that.
 
 ## Media
 
-![Random movement observation](../../assets/media/random-walk/random-movement-observations.gif)
+![Random movement observation](/assets/media/random-walk/random-movement-observations.gif)
 
 *NPC random movement being observed. The gif shows how walking away from in front of a goblin 
 allows it to continue moving on the same path. In addition to this, it shows numerous examples of
