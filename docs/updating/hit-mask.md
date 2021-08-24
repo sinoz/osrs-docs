@@ -1,3 +1,6 @@
+---
+parent: Entity Updating
+---
 
 # Hit Mask
 
