@@ -2,7 +2,7 @@
 parent: Mechanics
 ---
 
-# Retreat Mechanic
+# Retreat
 
 Retreating is a mechanic used by NPCs to primarily escape from combat. A version of retreating can be seen
 when shooing the stray dog in Varrock, causing it to retreat seven game squares away from the player.
