@@ -1,8 +1,7 @@
-remote_theme: pmarsceill/just-the-docs
+remote_theme: Z-Kris/just-the-docs
 gems:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
 color_scheme: "dark"
 markdown: kramdown
-highlighter: pygments
