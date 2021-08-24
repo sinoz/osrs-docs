@@ -58,7 +58,7 @@ val retreatDirection = when {
 
 ## Media
 
-![Retreat Example](/assets/media/retreat/retreat-1.gif)
+![Retreat Example](../../assets/media/retreat/retreat-1.gif)
 
 *The above video demonstrates attacking an NPC, moving outside its [Max Range](../variables/max-range.md#max-range),
 then attacking it to cause it to retreat. The NPC then begins retreating, actively re-calculating the
