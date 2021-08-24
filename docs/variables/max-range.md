@@ -1,3 +1,7 @@
+---
+parent: Variables
+---
+
 # Max Range
 
 ### Note: This thread is incomplete

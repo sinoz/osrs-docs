@@ -1,3 +1,6 @@
+---
+parent: Mechanics
+---
 
 # Interface Interactions
 
@@ -45,4 +48,4 @@ the resume pause button packet. Even though the rigour prayer was clicked, the r
 never appears, because the pause button sent off by the previous piety requirement-dialogue resumes the script
 the same exact tick on which it was paused. Therefore, the dialogue is opened and closed on the same exact tick.*
 
-![Instant pause button resume](../assets/media/interface-interactions/instant-pause-resume.gif)
+![Instant pause button resume](/assets/media/interface-interactions/instant-pause-resume.gif)

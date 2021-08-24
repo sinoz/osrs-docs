@@ -1,3 +1,6 @@
+---
+parent: Variables
+---
 
 # Wander Range
 
