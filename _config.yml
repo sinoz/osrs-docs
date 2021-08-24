@@ -4,3 +4,4 @@ gems:
   - jekyll-sitemap
   - jekyll-feed
 color_scheme: "dark"
+markdown: kramdown
