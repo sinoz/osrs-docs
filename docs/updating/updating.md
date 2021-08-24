@@ -6,4 +6,8 @@ has_children: true
 permalink: /docs/updating
 ---
 
-Covers everything player -and NPC updating related.
+Entity updating refers to two packets:
+- Player Info
+- NPC Info
+
+These packets are used to transmit information about the surrounding entities of a player.
