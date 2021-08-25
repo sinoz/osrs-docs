@@ -109,10 +109,9 @@ Below is a list of supported variables for head bars. Even though the mask itsel
 only one head bar can display in OldSchool RuneScape. The code responsible for finding the respective current head bar stops at the
 very first head bar that is active at the moment, regardless of if it actually matches the one that is being updated.
 - The type of the head bar. See types [here](#head-bar-types).
-- The time span of the head bar. While this appears to never be used in OldSchool RuneScape, it is supported.
-The number written informs the client to gradually progress the head bar towards the destination provided further below. Each value
-corresponds to one client tick, or 20 milliseconds. If the time span is written as 0x7FFF(32,767), the head bar will instead be
-removed instantly. If that's the case, none of the below will be written for this head bar.
+- The time span of the head bar. The number written informs the client to gradually progress the head bar towards the
+destination provided further below. Each value corresponds to one client tick, or 20 milliseconds. If the time span is written as 0x7FFF(32,767),
+the head bar will instead be removed instantly. If that's the case, none of the below will be written for this head bar.
 - The delay until the head bar becomes visible. The value corresponds to one client tick, or 20 milliseconds.
 - The number of pixels to fill the head bar with.
 - If the time span is between 1 and 32,766(inclusive), the number of pixels at which the gradual progression stops.
