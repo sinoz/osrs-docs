@@ -6,13 +6,13 @@ parent: Mechanics
 
 Interface interactions refer to the scripts that get executed when the player clicks on any interface component.
 This includes the interactions done with the items within the players inventory, equipment and such.
-While these scripts are suspendable, they cannot fully be used in the manner that queues and [interactions](entity-interactions#entity-interactions)
+While these scripts are suspendable, they cannot fully be used in the manner that queues and [entity interactions](entity-interactions#entity-interactions)
 can. Interface interactions can only suspend for pause-button resume events, such as dialogues and input events.
 They cannot be paused for other purposes, such as delaying the execution of the code for a few ticks.
 
 ## Conditions
 
-Only one interface script may be paused at a time. However, unlike queues and [interactions](entity-interactions#entity-interactions),
+Only one interface script may be paused at a time. However, unlike queues and [entity interactions](entity-interactions#entity-interactions),
 multiple scripts may pause and resume within the same game tick. This can happen because interface scripts are executed
 immediately upon being received. The paused script will be resumed when the respective "Resume Button" packet is received.
 If multiple valid interface clicks that suspend the script are sent on the same tick with the correct
