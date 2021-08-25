@@ -29,6 +29,12 @@ There are two types of timers in OldSchool RuneScape - soft timers and normal ti
 
 ---
 
+## Limits
+
+There are no limits for how many timers can execute for players.
+However, for NPCs, the limit is just one. This is why NPCs which periodically use overhead talk
+can never be poisoned, even if their immunities do not state an immunity from poison.
+
 ### Soft Timers
 
 Soft timers can be used by NPCs as well as players. In the case of players however, they do not have advanced
@@ -47,7 +53,6 @@ back to the period with which it was originally launched.
 
 ## Known timers
 
-
 ### Soft Timers
 
 - Player soft timers:
@@ -55,18 +60,16 @@ back to the period with which it was originally launched.
   - Overloads.
   - Antifires.
   - Anti-toxin potions(Relicym's balm, antipoison, anti-venom and all the other variations).
-  - Stat enhancements/debuffs.
   - Immunities(freeze, teleblock).
   - Stamina enhancement.
-  - Prayer enhance
+  - Prayer enhance.
   - Imbued heart cooldown.
   - Toxic staff of the dead's special attack.
   - Morrigan's throwing axe special attack.
   - Vengeance cooldown.
   - Hunter trap collapsing.
   - Tracking boss fight durations.
-- NPC soft timers(*List is still very incomplete at this time*):
-  - Respawning.
+- NPC soft timers:
   - Fishing spot periodic teleportation.
   - Toxins(poison, venom, disease).
 
@@ -83,6 +86,11 @@ back to the period with which it was originally launched.
   - While farming runs at an interval of five minutes, the time until the initial execution varies. Farming is synchronized with
   real-time clocks.
   - Cut-down farming trees execute on a separate timer.
+
+### Stat Replenishment
+
+Contrary to popular belief, stat replenishment and debuffs are not done using a timer. Instead, the engine of OldSchool RuneScape handles the periodic
+decrements/increments of player and NPC stats.
 
 ## Media
 
@@ -107,5 +115,12 @@ The `$sw` coordinate is an argument that the `inferno_timetrack` script requires
 
 ---
 
+*Further queries on why poison and other timers cannot co-execute for NPCs.*
+
+![Twitter questions - Poison](../../assets/media/timers/questions-on-poison.png)
+
+---
+
 ## References
-1. [Mod Ash Tweets](https://twitter.com/ZenKris21/status/1429701903626211334)
+1. [Mod Ash' Tweets on Timers](https://twitter.com/ZenKris21/status/1429701903626211334)
+2. [Mod Ash' Tweets on Poison and Stat Replenishment](https://twitter.com/ZenKris21/status/1430413294435803138)
