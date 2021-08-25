@@ -121,6 +121,13 @@ The `$sw` coordinate is an argument that the `inferno_timetrack` script requires
 
 ---
 
+*Asking Mod Ash if player timers have a capacity limit.*
+
+![Twitter questions - Poison](../../assets/media/timers/player-timers-limit.png)
+
+---
+
 ## References
-1. [Mod Ash' Tweets on Timers](https://twitter.com/ZenKris21/status/1429701903626211334)
-2. [Mod Ash' Tweets on Poison and Stat Replenishment](https://twitter.com/ZenKris21/status/1430413294435803138)
+1. [Mod Ash' tweets on timers](https://twitter.com/ZenKris21/status/1429701903626211334)
+2. [Mod Ash' tweets on poison and stat replenishment](https://twitter.com/ZenKris21/status/1430413294435803138)
+3. [Mod Ash' tweets on if player timers have a limit](https://twitter.com/ZenKris21/status/1430573998295879688)
