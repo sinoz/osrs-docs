@@ -24,7 +24,7 @@ value is 32,767.
   - The types 0x7FFF(32,767) and 0x7FFE(32,766) are used to inform the client to read the hit info differently.
   A breakdown of this can be found below in [ways of writing hits](#ways-of-writing-hits).
 - The amount displayed on the hit.
-- The delay until the hit is rendered. The duration is in client ticks, which are 20 millisecond each.
+- The delay until the hit is rendered. The duration is in [client ticks](../variables/client-tick.md#client-tick).
 - Unused variables(They are supported by the mask, but never used in OldSchool RuneScape):
   - Soak type. The type indicates the config that will be used for the soak splat that appears next to the normal hit splat.
   - Soak amount displayed on the soak hit splat.
@@ -110,17 +110,17 @@ only one head bar can display in OldSchool RuneScape. The code responsible for f
 very first head bar that is active at the moment, regardless of if it actually matches the one that is being updated.
 - The type of the head bar. See types [here](#head-bar-types).
 - The time span of the head bar. The number written informs the client to gradually progress the head bar towards the
-destination provided further below. Each value corresponds to one client tick, or 20 milliseconds. If the time span is written as 0x7FFF(32,767),
+destination provided further below. Each value corresponds to one [client tick](../variables/client-tick.md#client-tick). If the time span is written as 0x7FFF(32,767),
 the head bar will instead be removed instantly. If that's the case, none of the below will be written for this head bar.
-- The delay until the head bar becomes visible. The value corresponds to one client tick, or 20 milliseconds.
+- The delay until the head bar becomes visible. The value corresponds to one [client tick](../variables/client-tick.md#client-tick).
 - The number of pixels to fill the head bar with.
 - If the time span is between 1 and 32,766(inclusive), the number of pixels at which the gradual progression stops.
 
 ### Head Bar Types
 Below is a table of different head bar types. The types cannot be resized dynamically by the client, and as such,
 a lot of duplicate types are made to fill every possible width that might be used.
-- The duration variable is the total duration of the head bar in client ticks, which is 20 milliseconds each.
-- The disposal variable refers to the client tick at which the head bar begins gradually vanishing.
+- The duration variable is the total duration of the head bar in [client ticks](../variables/client-tick.md#client-tick).
+- The disposal variable refers to the [client tick](../variables/client-tick.md#client-tick) at which the head bar begins gradually vanishing.
 - The width refers to the width of the head bar sprite.
 
 *The table is sorted according to the internal head bar type ids.*
