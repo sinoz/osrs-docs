@@ -2,7 +2,7 @@
 parent: Mechanics
 ---
 
-# Interactions
+# Entity Interactions
 
 The interaction system refers to players interacting with either map objects, ground items,
 other players or NPCs. This includes item-on-entity as well as
