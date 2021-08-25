@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Exact Move Mask
+parent: Entity Updating
 grand_parent: Update Masks
 ---
 

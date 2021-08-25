@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Move Speed Mask
+parent: Entity Updating
 grand_parent: Update Masks
 ---
 
