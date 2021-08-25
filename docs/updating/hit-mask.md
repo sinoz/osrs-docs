@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Hit Mask
-parent: Entity Updating
-grand_parent: Update Masks
+parent: Update Masks
+grand_parent: Entity Updating
 ---
 
 # Hit Mask
