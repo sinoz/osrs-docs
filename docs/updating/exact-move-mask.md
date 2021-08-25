@@ -43,7 +43,7 @@ in the second part of the movement.
 
 Exact move can primarily be seen used for agility shortcuts and obstacles.
 An example scenario of a player using exact move can be seen during
-[the crossing of the underground tunnel](#the-crossing-of-the-underground-tunnel)
+[the crossing of the underground tunnel](#the-crossing-of-the-edgeville-underground-tunnel)
 connecting the [Grand Exchange](https://oldschool.runescape.wiki/w/Grand_Exchange) and [Edgeville](https://oldschool.runescape.wiki/w/Edgeville).
 
 In addition to players using exact move, this can also be seen for NPCs. Although the feature is relatively new
@@ -79,7 +79,7 @@ entity.exactMoveFacingDirection = buffer.readUnsignedShort();
 
 # Media
 
-#### The crossing of the underground tunnel
+#### The crossing of the Edgeville underground tunnel
 
 ![Edgeville tunnel crossing](../../assets/media/exact-move/edgeville-tunnel-exactmove.gif)
 
