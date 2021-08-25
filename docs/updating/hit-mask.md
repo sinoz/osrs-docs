@@ -208,5 +208,16 @@ It also shows the gradual progression from 100% down to 25%, over a time span of
 
 ---
 
+*The below gif demonstrates sending two hit splats, each with a soak hit splat.
+Note that the hit splat shown is configurable for everything. For this demonstration, I've
+specifically used the inactive and active versions of the respective hit splats.
+The reason behind capping it to two hit splats is due to overlapping. Since OldSchool RuneScape
+does not technically support soaking, the positioning of the hit splats is done in a way that
+makes any more than two hit splats begin overlapping.*
+
+![Soaking](../../assets/media/hit-mask/soak-demonstration.gif)
+
+---
+
 ## References
 1. [Hitsplat - OS Wikia](https://oldschool.runescape.wiki/w/Hitsplat)
