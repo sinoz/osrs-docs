@@ -194,5 +194,16 @@ if (headbarCount > 0) {
 }
 ```
 
+## Media
+
+*The below gif demonstrates sending an individual poison hit splat, without any associated head bars.*
+![Individual hitsplat](../../assets/media/hit-mask/hitsplat-demonstration.gif)
+
+---
+
+*The below gif demonstrates sending an individual head bar without any associated hits.
+It also shows the gradual progression from 100% down to 25%, over a time span of 90 [client ticks](../variables/client-tick.md#client-tick).*
+![Individual headbar](../../assets/media/hit-mask/headbar-demonstration.gif)
+
 ## References
 1. [Hitsplat - OS Wikia](https://oldschool.runescape.wiki/w/Hitsplat)
