@@ -1,6 +1,8 @@
 ---
 parent: Entity Updating
 ---
+1. TOC
+{:toc}
 
 # Hit Mask
 
