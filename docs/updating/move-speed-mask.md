@@ -30,7 +30,7 @@ transmitted for one server tick.
 The temporary move mask is also used in a scenario where the player has cached the run [type](#move-speed-types),
 but only requests to move a single game square.
 
-##Cached Move Speed Mask
+## Cached Move Speed Mask
 
 The cached move speed mask is used by the server to inform the client of a manual change in movement speed.
 It is typically sent when the player changes the status of their run orb, then moves to transmit the changes to
