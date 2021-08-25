@@ -1,8 +1,21 @@
 ---
+layout: default
+title: Game Variables(Varbits, Varps and Varcs)
 parent: Variables
 ---
 
 # Game Variables(Varbits, Varps and Varcs)
+{: .no_toc }
+
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
+
+---
 
 ## Varps
 

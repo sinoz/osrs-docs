@@ -1,11 +1,24 @@
 ---
+layout: default
+title: Move Speed Mask
 parent: Entity Updating
 ---
 
 # Move Speed Mask
+{: .no_toc }
 
 Move speed masks are used for player updating, to inform the client of the current movement speed of the character.
 There are two move speed masks - temporary and cached.
+
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
+
+---
 
 ## Move Speed Types
 

@@ -1,8 +1,11 @@
 ---
+layout: default
+title: Timers
 parent: Mechanics
 ---
 
 # Timers
+{: .no_toc }
 
 The timers' system is used to execute periodic scripts for players and NPCs.
 Each timer can only execute at a defined interval. The timer will start at the given interval,
@@ -15,6 +18,16 @@ existing timers are ticked down and processed if needed. After that, the new tim
 and the respective timers are moved onto the existing timers' collection. *The new timers do not get executed this tick.*
 
 There are two types of timers in OldSchool RuneScape - soft timers and normal timers.
+
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
+
+---
 
 ### Soft Timers
 

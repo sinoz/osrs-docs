@@ -1,12 +1,25 @@
 ---
+layout: default
+title: Random Walk
 parent: Mechanics
 ---
 
 # Random Walk
+{: .no_toc }
 
 Random walk is a mechanic used by NPCs to roam around the game.
 NPCs which aren't doing anything(moving, interacting) have a chance to
 determine a path to a random location within their [wander range](../variables/wander-range.md#wander-range).
+
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
+
+---
 
 ## Conditions
 

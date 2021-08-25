@@ -1,14 +1,27 @@
 ---
+layout: default
+title: Interface Interactions
 parent: Mechanics
 ---
 
 # Interface Interactions
+{: .no_toc }
 
 Interface interactions refer to the scripts that get executed when the player clicks on any interface component.
 This includes the interactions done with the items within the players inventory, equipment and such.
 While these scripts are suspendable, they cannot fully be used in the manner that queues and [entity interactions](entity-interactions#entity-interactions)
 can. Interface interactions can only suspend for pause-button resume events, such as dialogues and input events.
 They cannot be paused for other purposes, such as delaying the execution of the code for a few ticks.
+
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
+
+---
 
 ## Conditions
 

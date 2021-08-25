@@ -1,12 +1,25 @@
 ---
+layout: default
+title: Entity Interactions
 parent: Mechanics
 ---
 
 # Entity Interactions
+{: .no_toc }
 
 The interaction system refers to players interacting with either map objects, ground items,
 other players or NPCs. This includes item-on-entity as well as
 interface-component-on-entity(generally known as spell-on-entity) interactions.
+
+---
+
+## Table of contents
+{: .no_toc .text-delta }
+
+- TOC
+{:toc}
+
+---
 
 ## Behaviors
 
