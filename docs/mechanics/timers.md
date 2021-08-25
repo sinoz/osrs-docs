@@ -35,14 +35,14 @@ There are no limits for how many timers can execute for players.
 However, for NPCs, the limit is just one. This is why NPCs which periodically use overhead talk
 can never be poisoned, even if their immunities do not state an immunity from poison.
 
-### Soft Timers
+## Soft Timers
 
 Soft timers can be used by NPCs as well as players. In the case of players however, they do not have advanced
 access to the player, meaning they cannot change or read the player's inventories or variables.
 Soft timers tick down regardless of the state of the entity, as long as they haven't completely
 been removed from the game.
 
-### Normal Timers
+## Normal Timers
 
 Normal timers are unique only to players. They are used for scripts which require advanced access to the player itself.
 While normal timers do tick down without interruptions, the contents of the script may only execute if the
