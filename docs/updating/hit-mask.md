@@ -10,7 +10,7 @@ parent: Entity Updating
 Hit mask refers to the updating mask used by both player updating and NPC updating to display
 head bars and/or hit splats on an entity. The mask is made up out of two sections - hits splats and head bars.
 
---
+---
 
 ## Table of contents
 {: .no_toc .text-delta }
