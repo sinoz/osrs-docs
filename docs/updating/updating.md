@@ -7,7 +7,7 @@ permalink: /docs/updating
 ---
 
 Entity updating refers to two packets:
-- Player Info
+- [Player Info](player-info.md)
 - NPC Info
 
 These packets are used to transmit information about the surrounding entities of a player.

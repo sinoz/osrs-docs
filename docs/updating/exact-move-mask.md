@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Exact Move Mask
-parent: Entity Updating
+parent: Update Masks
 ---
 
 # Exact Move Mask
