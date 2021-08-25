@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Exact Move Mask
-parent: Update Masks
+grand_parent: Update Masks
 ---
 
 # Exact Move Mask

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Move Speed Mask
-parent: Update Masks
+grand_parent: Update Masks
 ---
 
 # Move Speed Mask

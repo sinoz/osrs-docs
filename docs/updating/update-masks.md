@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Update Masks
-nav_order: 1
+nav_order: 2
 parent: Entity Updating
 has_children: true
 permalink: /docs/update-masks

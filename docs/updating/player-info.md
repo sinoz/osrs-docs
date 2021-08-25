@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Player Info
+nav_order: 1
 parent: Entity Updating
 ---
 

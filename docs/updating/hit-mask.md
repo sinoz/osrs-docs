@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Hit Mask
-parent: Update Masks
+grand_parent: Update Masks
 ---
 
 # Hit Mask
