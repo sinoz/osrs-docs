@@ -8,7 +8,7 @@ parent: Entity Updating
 {: .no_toc }
 
 - TOC
-  {:toc}
+{:toc}
 
 ---
 
