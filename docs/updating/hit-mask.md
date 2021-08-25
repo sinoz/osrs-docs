@@ -1,10 +1,16 @@
 ---
+layout: default
+title: Hit Mask
 parent: Entity Updating
 ---
-- TOC
-{:toc}
 
 # Hit Mask
+{: .no_toc }
+
+- TOC
+  {:toc}
+
+---
 
 Hit mask refers to the updating mask used by both player updating and NPC updating to display
 head bars and/or hit splats on an entity. The mask is made up out of two sections - hits splats and head bars.
