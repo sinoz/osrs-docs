@@ -79,13 +79,13 @@ entity.exactMoveFacingDirection = buffer.readUnsignedShort();
 
 # Media
 
-##### The crossing of the underground tunnel
+#### The crossing of the underground tunnel
 
 ![Edgeville tunnel crossing](../../assets/media/exact-move/edgeville-tunnel-exactmove.gif)
 
 ---
 
-##### The clouds at Tempoross
+#### The clouds at Tempoross
 
 ![Tempoross clouds](../../assets/media/exact-move/tempoross-exactmove.gif)
 
