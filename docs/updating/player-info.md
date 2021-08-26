@@ -108,7 +108,8 @@ Next up, the client will read two bits of data:
   - If the player does not have any updates to be read, it informs the client that the player is being removed from the local players list.
     In addition to this, another one bit is written to the client. If the value of that is one, the client will then
     read the [map quarter block](#map-quarter-block) update for this player.
-  - If the player does have updates to be read, it marks the given player to have their mask updates read further below.
+  - If the player does have updates to be read, it marks the given player to not have any movement pending.
+  This is needed for calculations in the [exact move mask](exact-move-mask.md).
   - Block ends here for this player, and moves on to the next.
 - If the value is not 0, it informs the client that the given player has a movement update coming:
   - If the value is 1, the client will read three bits of data, which indicates a walk update. Those three bits will indicate
@@ -132,7 +133,258 @@ Next up, the client will read two bits of data:
           - The last two bits of that inform the client of the `level` delta. The value range here is 0 to 3(inclusive).
   - Block ends here for this player, and moves on to the next.
 
+#### Client Code
+
+The client code behind local player updating is rather long. As such, it will be broken down into multiple parts here.
+
+The code begins with checking if the given player has any mask updates pending, flagging them if so:
+```java
+boolean hasMaskUpdates = buffer.getBits(1) == 1;
+if (hasMaskUpdates) {
+    pendingMaskUpdates[maskUpdatesCount++] = playerIndex;
+}
+```
+
+Next up, the client reads the type of the update that this player will have applied on them:
+```java
+int updateType = buffer.getBits(2);
+```
+
+Here, depending on the update type, we will break each type down separately:
+- When the update type is 0:
+```java
+if (updateType == 0) {
+    if (hasMaskUpdates) {
+        player.hasMovementPending = false;
+    } else if (Client.localPlayerIndex == playerIndex) {
+        throw new RuntimeException();
+    } else {
+        playerMapQuarters[playerIndex] = (player.level << 28) + (Client.baseX + player.pathX[0] >> 13 << 14) + (Client.baseZ + player.pathZ[0] >> 13);
+        if (player.movingOrientation == -1) {
+            playerOrientations[playerIndex] = player.orientation;
+        } else {
+            playerOrientations[playerIndex] = player.movingOrientation;
+        }
+        playerInteractions[playerIndex] = player.interacting;
+        Client.cachedPlayers[playerIndex] = null;
+        if (buffer.getBits(1) != 0) {
+            decodePlayerMapQuarters(buffer, playerIndex);
+        }
+    }
+}
+```
+- When the update type is 1:
+
+Note: The coordinate offsets block used in walk decoding has been exported to a [separate function](#walk-direction-decoding)
+to avoid duplicating code and making this thread any longer than it needs to be.
+The same thing applies to the block used to actually move the players, as both walking and running have
+identical code for it. That block of code can be seen [here](#updating-movement).
+```java
+if (updateType == 1) {
+    int direction = buffer.getBits(3);
+    int pathX = player.pathX[0];
+    int pathZ = player.pathZ[0];
+    // For the purposes of this demonstration, the below direction decoding has been exported
+    // into another function to avoid duplicating the code throughout this thread.
+    int[] coordinateOffsets = getCoordinateOffsets(direction);
+    pathX += coordinateOffsets[0];
+    pathZ += coordinateOffsets[1];
+    // Because all movement uses the same code to move the players, the below code has been exported
+    // into a separate function.
+    updateMovement(playerIndex, hasMaskUpdates, pathX, pathZ);
+}
+```
+- When the update type is 2:
+
+Note: Because the code which actually processes walking and running is identical between one another,
+it has been exported to a separate function. That block of code can be seen [here](#updating-movement).
+```java
+if (updateType == 2) {
+    direction = buffer.getBits(4);
+    pathX = player.pathX[0];
+    pathZ = player.pathZ[0];
+    if (direction == 0) {
+        pathX -= 2;
+        pathZ -= 2;
+    } else if (direction == 1) {
+        pathX--;
+        pathZ -= 2;
+    } else if (direction == 2) {
+        pathZ -= 2;
+    } else if (direction == 3) {
+        pathX++;
+        pathZ -= 2;
+    } else if (direction == 4) {
+        pathX += 2;
+        pathZ -= 2;
+    } else if (direction == 5) {
+        pathX -= 2;
+        pathZ--;
+    } else if (direction == 6) {
+        pathX += 2;
+        pathZ--;
+    } else if (direction == 7) {
+        pathX -= 2;
+    } else if (direction == 8) {
+        pathX += 2;
+    } else if (direction == 9) {
+        pathX -= 2;
+        pathZ++;
+    } else if (direction == 10) {
+        pathX += 2;
+        pathZ++;
+    } else if (direction == 11) {
+        pathX -= 2;
+        pathZ += 2;
+    } else if (direction == 12) {
+        pathX--;
+        pathZ += 2;
+    } else if (direction == 13) {
+        pathZ += 2;
+    } else if (direction == 14) {
+        pathX++;
+        pathZ += 2;
+    } else if (direction == 15) {
+        pathX += 2;
+        pathZ += 2;
+    }
+
+    // Because all movement uses the same code to move the players, the below code has been exported
+    // into a separate function.
+    updateMovement(playerIndex, hasMaskUpdates, pathX, pathZ);
+}
+```
+- When the update type is 3:
+The client will start off by reading one bit of data, to determine whether the update is a close-distance or a long-distance
+teleport.
+```java
+int teleportType = buffer.getBits(1);
+```
+Next up, the code branches into two sections:
+- Close-distance teleport:
+
+Note: Because the code which actually processes walking and running is identical between one another, 
+it has been exported to a separate function. That block of code can be seen [here](#updating-movement).
+
+```java
+if (teleportType == 0) {
+    int packedTeleportCoords = var0.getBits(12);
+    int deltaLevel = packedTeleportCoords >> 10;
+    int deltaX = packedTeleportCoords >> 5 & 31;
+    int deltaZ = packedTeleportCoords & 31;
+    if (deltaX > 15) {
+        deltaX -= 32;
+    }
+    if (deltaZ > 15) {
+        deltaZ -= 32;
+    }
+    int pathX = deltaX + player.pathX[0];
+    int pathZ = deltaZ + player.pathZ[0];
+
+    // Because all movement uses the same code to move the players, the below code has been exported
+    // into a separate function.
+    updateMovement(playerIndex, hasMaskUpdates, pathX, pathZ);
+
+    player.level = (byte) (deltaLevel + player.level & 3);
+    if (Client.localPlayerIndex == playerIndex) {
+        Client.localPlayerLevel = player.level;
+    }
+}
+```
+- Long-distance teleport:
+
+Note: Because the code which actually processes walking and running is identical between one another,
+it has been exported to a separate function. That block of code can be seen [here](#updating-movement).
+This is a direct continuation of the close-distance teleport block above, thus, it begins with an else-statement.
+
+```java
+else {
+    int packedTeleportCoords = buffer.getBits(30);
+    int deltaLevel = packedTeleportCoords >> 28;
+    int deltaX = packedTeleportCoords >> 14 & 16383;
+    int deltaZ = packedTeleportCoords & 16383;
+    int pathX = (Client.baseX + deltaX + player.pathX[0] & 16383) - Client.baseX;
+    int pathZ = (Client.baseZ + deltaZ + player.pathZ[0] & 16383) - Client.baseZ;
+    
+    // Because all movement uses the same code to move the players, the below code has been exported
+    // into a separate function.
+    updateMovement(playerIndex, hasMaskUpdates, pathX, pathZ);
+
+    player.level = (byte) (deltaLevel + player.level & 3);
+    if (Client.localPlayerIndex == playerIndex) {
+        Client.localPlayerLevel = player.level;
+    }
+}
+```
+
+#### Walk Direction Decoding
+
+Since walk direction decoding is used more than once in player updating, it will be explicitly brought out here
+to avoid duplicating this large section of the code. The code has been slightly altered to be able to export
+it into a reusable function:
+
+```java
+private int[] getCoordinateOffsets(int direction) {
+    int xOffset = 0;
+    int zOffset = 0;
+    if (direction == 0) {
+        xOffset--;
+        zOffset--;
+    } else if (direction == 1) {
+        zOffset--;
+    } else if (direction == 2) {
+        xOffset++;
+        zOffset--;
+    } else if (direction == 3) {
+        xOffset--;
+    } else if (direction == 4) {
+        xOffset++;
+    } else if (direction == 5) {
+        xOffset--;
+        zOffset++;
+    } else if (direction == 6) {
+        zOffset++;
+    } else if (direction == 7) {
+        xOffset++;
+        zOffset++;
+    }
+    return new int[] { xOffset, zOffset };
+}
+```
+
+#### Updating Movement
+
+Because the walk and run movement use identical code blocks to process players' movement, the code has been extracted
+to a function below:
+```java
+private void updateMovement(int playerIndex, boolean hasMaskUpdates, int pathX, int pathZ) {
+    if (Client.localPlayerIndex != playerIndex || player.x >= 1536 && player.z >= 1536 && player.x < 11776 && player.z < 11776) {
+        if (hasMaskUpdates) {
+            player.hasMovementPending = true;
+            player.xPos = pathX;
+            player.zPos = pathZ;
+        } else {
+            player.hasMovementPending = false;
+            player.move(pathX, pathZ, playerMovementSpeeds[playerIndex]);
+        }
+    } else {
+        player.teleport(pathX, pathZ);
+        player.hasMovementPending = false;
+    }
+}
+```
+
+The coordinate checks for `>= 1536` and `< 11776` are used to ensure that when the local player is walking
+too close to the edge of their loaded map, they will instead teleport to avoid any sort of weird movement problems.
+The `player.x` and `player.z` are precise tile coordinates of the given player. Each tile is 128 units in diameter.
+Therefore, if we divide the values by 12, we see that the actual checks are for `x >= 12` and `z < 92`.
+The local map is 104 tiles in diameter. Because map reload is forced when the local player goes within two
+zones(which is equivalent to 2x8 tiles) of the local map's edge, this condition should in theory never be reached.
+
 ### External Players
+
+Incomplete
+{: .label .label-red }
 
 After both of the local player blocks have been read, the client will read the active and inactive external players respectively.
 This section of the document is a continuation of [the skip block](#the-skip-block).
